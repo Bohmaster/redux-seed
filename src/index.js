@@ -6,7 +6,9 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-let store = createStore()
+import todos from './reducers/todos'
+
+let store = createStore(todos)
 
 ReactDOM.render(
     <Provider store={store}>
