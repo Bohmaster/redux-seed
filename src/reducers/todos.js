@@ -1,11 +1,12 @@
-const todos = (state = [], action) => {
+const todos = (state = {}, action) => {
+    console.log(state, action)
     switch (action.type) {
         case 'ADD_TODO': 
             return Object.assign({}, state, {
                 todos: [
                     ...state.todos,
                     {
-                        text: action.payload
+                        ...action.payload
                     }
                 ]
             })

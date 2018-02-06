@@ -4,11 +4,19 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
 import todos from './reducers/todos'
 
-let store = createStore(todos)
+let initialState = {
+    todos: [
+        {text: 'Default'}
+    ],
+    messasges: []
+}
+
+export let store = createStore(todos, initialState)
+
+
 
 ReactDOM.render(
     <Provider store={store}>
@@ -17,4 +25,3 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-registerServiceWorker();
