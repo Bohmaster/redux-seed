@@ -18,11 +18,8 @@ class Todo extends Component {
     }
     
     addTodo = () => {
-        this.props.dispatch({
-            type: ACTIONS.ADD_TODO,
-            payload: {
-                text: this.state.text
-            }
+        this.props.add_todo({
+            text: this.state.text    
         })
     }
 
@@ -67,13 +64,14 @@ const mapStateToProps = state => {
     }
   }
   
-// const mapDispatchToProps = dispatch => {
-//     return {
-//       addTodo : () => dispatch({
-//         type : 'DESTROY_TODO'
-//       })
-//     }
-//   }
+const mapDispatchToProps = dispatch => {
+     return {
+       add_todo : (todo) => dispatch({
+         type : 'ADD_TODO',
+         payload: todo
+       })
+     }
+   }
   
 
-export default connect(mapStateToProps)(Todo)
+export default connect(mapStateToProps, mapDispatchToProps)(Todo)
