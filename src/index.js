@@ -16,8 +16,6 @@ let initialState = {
 
 export let store = createStore(todos, initialState)
 
-
-
 ReactDOM.render(
     <Provider store={store}>
         <App />

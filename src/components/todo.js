@@ -8,6 +8,9 @@ class Todo extends Component {
     constructor(props) {
         console.log('!!!', props);
         super(props)
+        this.state = {
+            text: ''
+        }
     }
 
     componentDidMount() {
@@ -18,8 +21,14 @@ class Todo extends Component {
         this.props.dispatch({
             type: ACTIONS.ADD_TODO,
             payload: {
-                text: 'First todo'
+                text: this.state.text
             }
+        })
+    }
+
+    changeValue = (evt) => {
+        this.setState({
+            text: evt.target.value
         })
     }
     
@@ -28,11 +37,19 @@ class Todo extends Component {
             <div>
                 <h1>Todo!</h1>
                 <h2>Lista:</h2>
+                <form>
+                    <input
+                        value={this.state.text}
+                        onChange={(evt) => {
+                            this.changeValue(evt)
+                        }}>
+                    </input>
+                </form>
                 <ul>
                   {
-                    this.props.todos.map(function(todo) {
-                        <li>{todo}</li>
-                    })    
+                      this.props.todos.map((todo) => (
+                        <li>{todo.text}</li>
+                      ))
                   }    
                 </ul>
 
