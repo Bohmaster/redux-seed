@@ -43,6 +43,7 @@ class Todo extends Component {
                 }
 
                 <ul style={{width: '600px'}}>
+                    <li>Initial State Todo</li>
                   {
                       this.props.todos.list.map((todo) => (
                         <li>{todo.text}</li>
