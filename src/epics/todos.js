@@ -4,7 +4,7 @@ import { Observable } from 'rxjs'
 
 import { store } from '../index'
 
-import {FAKE_API_URL, fetchFake, setResponse} from '../services/todos'
+import { FAKE_API_URL, fetchFake, setResponse } from '../services/todos'
 
 const todoEpic = (action$) => {
     console.log(action$)
@@ -16,7 +16,7 @@ const todoEpic = (action$) => {
                 payload: {
                     isPending: true
                 }
-            })    
+            })
             return Observable.from(fetchFake())
                 .map((result) => {
                     store.dispatch({
@@ -24,11 +24,12 @@ const todoEpic = (action$) => {
                         payload: {
                             isPending: false
                         }
-                    })   
+                    })
                     return setResponse(result)
                 }
-            )}
-        )         
+                )
+        }
+        )
 }
 
 export default todoEpic

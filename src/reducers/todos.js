@@ -7,24 +7,21 @@ import
     } 
 from '../actions/todos'
 
-const todos = (state = {}, action) => {
+export const todos = (state = {list: [], posts: []}, action) => {
     console.log(state, action)
     switch (action.type) {
         case ADD_TODO:
-            console.log('ADD_TODO', action) 
-            return Object.assign({}, state, {
-                todos: [
-                    ...state.todos,
-                    {
-                        ...action.payload
-                    }
-                ]
-            })
+            console.log('ADD_TODO', action, state)
+            return {
+                ...state,
+                list: state.list.concat(action.payload)
+            }
         case ADD_TODO_ASYNC:
             console.log('ADD_TODO_ASYNC', state, action)
-            return Object.assign({}, state, {
-                messages: action.payload
-            })
+            return {
+                ...state,
+                posts: state.posts.concat(action.payload)
+            }
         case ADD_TODO_ASYNC_BEFORE:
             console.log('ADD_TODO_ASYNC_BEFORE', state, action)
             return {

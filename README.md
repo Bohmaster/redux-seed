@@ -5,8 +5,8 @@ Base project of React and its Ecosystem.
 Libraries used:
 
 - react 
-- react-router
 - react-redux
+- react-router-redux
 - react-redux-observables
 - RxJS
 

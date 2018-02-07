@@ -1,37 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
+
+
 import './index.css';
 import App from './App';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import todos from './reducers/todos'
 import todoEpic from './epics/todos'
 
 const epics = createEpicMiddleware(todoEpic)
+const history = createHistory()
+const rMiddleware = routerMiddleware(history)
 
-let initialState = {
-    todos: [
-        {text: 'Default'}
-    ],
-    messages: [],
-    isPending: false
-}
 
 export let store = createStore(
-    todos,
-    initialState,
-    applyMiddleware(epics)
+    combineReducers({
+        todos: todos,
+        router: routerReducer
+      }),  
+    applyMiddleware(epics, rMiddleware)
 )
 
 ReactDOM.render(
     <Provider store={store}>
-       <Router>
-         <Route path="/app" component={App} />
-       </Router>
+      <ConnectedRouter history={history}>
+        <div>
+          <Route exact path="/" component={App}/>
+        </div>
+      </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
 );

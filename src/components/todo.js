@@ -51,7 +51,7 @@ class Todo extends Component {
                 </form>
                 <ul>
                   {
-                      this.props.todos.map((todo) => (
+                      this.props.todos.list.map((todo) => (
                         <li>{todo.text}</li>
                       ))
                   }    
