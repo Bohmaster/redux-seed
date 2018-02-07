@@ -9,7 +9,8 @@ class Todo extends Component {
         console.log('!!!', props);
         super(props)
         this.state = {
-            text: ''
+            text: '',
+            ready: false
         }
     }
 
@@ -19,7 +20,8 @@ class Todo extends Component {
     
     addTodo = () => {
         this.props.add_todo({
-            text: this.state.text    
+            text: this.state.text,
+            ready: true   
         })
     }
 
@@ -34,6 +36,11 @@ class Todo extends Component {
             <div>
                 <h1>Todo!</h1>
                 <h2>Lista:</h2>
+                {
+                    this.props.isPending && !this.state.ready ? 
+                        <h3>Cargando...</h3> :
+                        <h3>Datos cargados</h3>
+                }
                 <form>
                     <input
                         value={this.state.text}
@@ -60,7 +67,8 @@ class Todo extends Component {
 const mapStateToProps = state => {
     console.log('State map', state);
     return {
-      todos: state.todos
+      todos: state.todos,
+      isPending: state.isPending
     }
   }
   

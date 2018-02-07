@@ -1,5 +1,5 @@
-const ACTIONS = {
-    ADD_TODO : 'ADD_TODO'
-}
+export const ADD_TODO = 'ADD_TODO'
+export const ADD_TODO_ASYNC = 'ADD_TODO_ASYNC'
+export const ADD_TODO_ASYNC_BEFORE = 'ADD_TODO_ASYNC_BEFORE'
+export const ADD_TODO_ASYNC_AFTER = 'ADD_TODO_ASYNC_AFTER'
 
-export default ACTIONS
