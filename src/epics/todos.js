@@ -4,7 +4,11 @@ import { Observable } from 'rxjs'
 
 import { store } from '../index'
 
-import { FAKE_API_URL, fetchFake, setResponse } from '../services/todos'
+import {TodoService} from '../services/todos'
+
+console.log('EASDASDA', TodoService)
+
+const Todo = new TodoService()
 
 const todoEpic = (action$) => {
     console.log(action$)
@@ -17,15 +21,16 @@ const todoEpic = (action$) => {
                     isPending: true
                 }
             })
-            return Observable.from(fetchFake())
+            return Observable.from(Todo.fetchFake())
                 .map((result) => {
+                    console.log('RESULLLLLLLLLT', result)
                     store.dispatch({
                         type: 'ADD_TODO_ASYNC_AFTER',
                         payload: {
                             isPending: false
                         }
                     })
-                    return setResponse(result)
+                    return Todo.setResponse(result)
                 }
                 )
         }
