@@ -33,14 +33,22 @@ class Todo extends Component {
     
     render() {
         return (
-            <div>
-                <h1>Todo!</h1>
+            <div style={{margin: '0 auto', position: 'relative', 'text-align': 'center'}}>
+                <h1>Todos!</h1>
                 <h2>Lista:</h2>
                 {
                     this.props.isPending && !this.state.ready ? 
                         <h3>Cargando...</h3> :
                         <h3>Datos cargados</h3>
                 }
+
+                <ul style={{width: '600px'}}>
+                  {
+                      this.props.todos.list.map((todo) => (
+                        <li>{todo.text}</li>
+                      ))
+                  }    
+                </ul>
                 <form>
                     <input
                         value={this.state.text}
@@ -49,16 +57,18 @@ class Todo extends Component {
                         }}>
                     </input>
                 </form>
-                <ul>
+                <button onClick={this.addTodo}>Add</button>    
+
+                                <h1>Posts!</h1>
+                <h2>Lista:</h2>
+                  
+                <ul style={{width: '600px'}}>
                   {
-                      this.props.todos.list.map((todo) => (
-                        <li>{todo.text}</li>
+                      this.props.todos.posts.map((post) => (
+                        <li>{post.title}</li>
                       ))
                   }    
-                </ul>
-
-                
-                <button onClick={this.addTodo}>Add</button>    
+                </ul>               
             </div>
         )
     }
@@ -68,7 +78,7 @@ const mapStateToProps = state => {
     console.log('State map', state);
     return {
       todos: state.todos,
-      isPending: state.isPending
+      isPending: state.todos.isPending
     }
   }
   

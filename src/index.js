@@ -7,10 +7,8 @@ import { createEpicMiddleware } from 'redux-observable'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 
-
 import './index.css';
 import App from './App';
-
 
 import todos from './reducers/todos'
 import todoEpic from './epics/todos'
