@@ -1,3 +1,15 @@
+## Surhive React Seed
+
+Base project of React and its Ecosystem.
+
+Libraries used:
+
+- react 
+- react-router
+- react-redux
+- react-redux-observables
+- RxJS
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
