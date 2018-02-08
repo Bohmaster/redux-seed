@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-import Todo from './components/todo'
-
 class App extends Component {
   render() {
     return (
@@ -14,7 +12,6 @@ class App extends Component {
         </header>
         <p className="App-intro">
         </p>
-        <Todo/>
       </div>
     )
   }
