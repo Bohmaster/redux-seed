@@ -6,15 +6,14 @@ import { store } from '../index'
 
 import {TodoService} from '../services/todos'
 
-console.log('EASDASDA', TodoService)
-
 const Todo = new TodoService()
 
 const todoEpic = (action$) => {
-    console.log(action$)
+    // console.log("TODO EPIC ACTION", action$)
     return action$
         .ofType('ADD_TODO')
         .mergeMap(() => {
+            console.log("TODO EPIC ACTION", action$)
             store.dispatch({
                 type: 'ADD_TODO_ASYNC_BEFORE',
                 payload: {
